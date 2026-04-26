@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>M0ney Marketplace</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #0b0b0f;
+    color: white;
+    font-family: Segoe UI;
+}
+
+/* BLOCK SCREEN */
+.block {
+    position: fixed;
+    inset: 0;
+    background: #0b0b0f;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+/* TOP */
+.topbar {
+    background: #111;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #222;
+    align-items: center;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #00ff99;
+}
+
+/* DISCORD */
+.discord-btn {
+    background: transparent;
+    border: 1px solid #333;
+    width: 55px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MONEY */
+.money-bar {
+    background: #0f0f14;
+    padding: 15px;
+    border-bottom: 1px solid #222;
+    color: #00ff99;
+    display: flex;
+    flex-direction: column;
+}
+
+.money-bar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+}
+
+/* CONTENT */
+.container {
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 260px;
+    background: #15151a;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.price {
+    color: #00ff99;
+}
+
+/* BUTTON */
+button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #00ff99;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+/* FLAG */
+.flag {
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+.flag .blue { height: 5px; background:#0057ff; }
+.flag .yellow { height: 5px; background:#ffd700; }
+
+.flag-text {
+    text-align:center;
+    font-size:12px;
+    color:#777;
+    margin-top:10px;
+}
+
+/* EASTER */
+.easter {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 9999;
+}
+
+.easter .blue { height: 50%; background:#0057ff; }
+.easter .yellow { height: 50%; background:#ffd700; }
+
+.easter h1 {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BLOCK -->
+<div class="block" id="block">
+    <h1>⛔ ЗАБОРОНЕНО У ВАШОМУ РЕГІОНІ</h1>
+    <input id="code" placeholder="unlock code">
+    <button onclick="unlock()">UNLOCK</button>
+</div>
+
+<!-- TOP -->
+<div class="topbar">
+
+    <div class="logo-box">
+        <img class="logo-img" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGJrMzhxd3NlMXZzcm1wcWQ3eDhmOTBhcTRkNHNvZmR0eTBpd2x1eCZlcD12MV9pbnRlcm5hbF9naWZfaWQmY3Q9Zw/YGIpIZjgxL68w/giphy.gif">
+        <div>M0ney Marketplace</div>
+    </div>
+
+    <button class="discord-btn" onclick="openDiscord()">
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXN1MXQ1NHQxemRhMXB1NjVxMDB5YmRoMWsxb2xvMDA1NHNianNtMyZlcD12MV9pbnRlcm5hbF9naWZfaWQmY3Q9Zw/W7I1mLuOxK1en6sii9/giphy.gif"
+        width="25" height="25">
+    </button>
+
+</div>
+
+<!-- MONEY -->
+<div class="money-bar">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3JiNTU2NWI5Z2Nzc3k2ODVzdDh5eXJwMjV6OHRlYTc4d3N6MzAyNSZlcD12MV9pbnRlcm5hbF9naWZfaWQmY3Q9Zw/xTiTnqUxyWbsAXq7Ju/giphy.gif">
+    💸 Balance: 0 M0ney Coins
+</div>
+
+<!-- MAIN -->
+<div class="container" id="content">
+
+    <div class="title">💰 Store</div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>💸 Money Obby</h3>
+            <div class="price">FREE</div>
+            <button onclick="openGame()">▶ Play</button>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Simulator X</h3>
+            <div class="price">IN DEV</div>
+            <button disabled>SOON</button>
+        </div>
+
+    </div>
+
+    <!-- FLAG -->
+    <div class="flag" ondblclick="easter()">
+        <div class="blue"></div>
+        <div class="yellow"></div>
+        <div class="flag-text">Created by M0ney Studios</div>
+    </div>
+
+</div>
+
+<!-- EASTER -->
+<div class="easter" id="easter" onclick="closeEaster()">
+    <div class="blue"></div>
+    <div class="yellow"></div>
+    <h1>СЛАВА УКРАЇНІ!</h1>
+</div>
+
+<script>
+
+function openGame(){
+    window.open("https://www.roblox.com/games/95702297231471/Money-Obby","_blank");
+}
+
+function openDiscord(){
+    window.open("https://discord.com","_blank");
+}
+
+/* REGION */
+function checkRegion(){
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    const allowed = [
+        "Europe/Kyiv",
+        "America/New_York",
+        "America/Chicago",
+        "America/Los_Angeles"
+    ];
+
+    if(!allowed.includes(tz)){
+        document.getElementById("block").style.display = "flex";
+        document.getElementById("content").style.display = "none";
+    }
+}
+checkRegion();
+
+/* UNLOCK */
+function unlock(){
+    if(document.getElementById("code").value === "2016"){
+        document.getElementById("block").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    } else {
+        alert("Wrong code");
+    }
+}
+
+/* EASTER */
+function easter(){
+    document.getElementById("easter").style.display = "block";
+    document.documentElement.requestFullscreen?.();
+}
+
+function closeEaster(){
+    document.getElementById("easter").style.display = "none";
+    document.exitFullscreen?.();
+}
+
+</script>
+
+</body>
+</html>
